@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             val dialogView = layoutInflater.inflate(R.layout.bottom_sheet, null)
             dialog = BottomSheetDialog(this)
             dialog.setContentView(dialogView)
+            dialog.behavior.isHideable = false
             dialog.behavior.peekHeight = getScreenHeight() / 3
             recyclerView = dialogView.findViewById(R.id.recyclerView)
             recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
