@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.kovaltestapp.utils.Constants.options
 import com.example.kovaltestapp.R
 import com.example.kovaltestapp.database.OptionDb
@@ -17,15 +16,14 @@ import com.example.kovaltestapp.databinding.ActivityMainBinding
 import com.example.kovaltestapp.model.Option
 import com.example.kovaltestapp.view.adapter.RecyclerViewAdapter
 import com.example.kovaltestapp.viewmodel.MainViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
 class MainActivity : AppCompatActivity() {
-    private  lateinit var binding: ActivityMainBinding
-    private lateinit var dialog: BottomSheetDialog
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: RecyclerViewAdapter
     private lateinit var viewModel: MainViewModel
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,15 +89,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun showBottomSheet() {
-            val dialogView = layoutInflater.inflate(R.layout.bottom_sheet, null)
-            dialog = BottomSheetDialog(this)
-            dialog.setContentView(dialogView)
-            dialog.behavior.isHideable = false
-            dialog.behavior.peekHeight = getScreenHeight() / 3
-            recyclerView = dialogView.findViewById(R.id.recyclerView)
-            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-            recyclerView.adapter = adapter
-            dialog.show()
+            bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
+            bottomSheetBehavior.peekHeight = getScreenHeight() / 3
+            binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            binding.recyclerView.adapter = adapter
         }
 
 
