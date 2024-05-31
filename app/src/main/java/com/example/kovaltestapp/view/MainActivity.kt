@@ -1,5 +1,6 @@
 package com.example.kovaltestapp.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -81,30 +82,41 @@ class MainActivity : AppCompatActivity() {
             binding.scanRectangle.image.setImageResource(R.drawable.device_scan)
             binding.scanRectangle.head.setText(R.string.device_scan)
             binding.scanRectangle.button.setText(R.string.scan)
-            binding.scanRectangle.button.setOnClickListener { showBottomSheet() }
         }
 
         fun setVirusesRectangle() {
             binding.checkVirusesRectangle.image.setImageResource(R.drawable.virus_white)
             binding.checkVirusesRectangle.head.setText(R.string.check_for_viruses)
             binding.checkVirusesRectangle.button.setText(R.string.check)
-            binding.checkVirusesRectangle.button.setOnClickListener { showBottomSheet() }
         }
+
+        fun showBottomSheet() {
+            val dialogView = layoutInflater.inflate(R.layout.bottom_sheet, null)
+            dialog = BottomSheetDialog(this)
+            dialog.setContentView(dialogView)
+            dialog.behavior.peekHeight = getScreenHeight() / 3
+            recyclerView = dialogView.findViewById(R.id.recyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            recyclerView.adapter = adapter
+            dialog.show()
+        }
+
 
         setAnimation()
         setImage33()
         setDangerCircle()
         setScanRectangle()
         setVirusesRectangle()
+        showBottomSheet()
     }
 
-    private fun showBottomSheet() {
-        val dialogView = layoutInflater.inflate(R.layout.bottom_sheet, null)
-        dialog = BottomSheetDialog(this)
-        dialog.setContentView(dialogView)
-        recyclerView = dialogView.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = adapter
-        dialog.show()
+    private fun getScreenHeight() : Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val windowMetrics = windowManager.currentWindowMetrics
+            val rect = windowMetrics.bounds
+            rect.bottom
+        } else {
+            resources.displayMetrics.heightPixels
+        }
     }
 }
