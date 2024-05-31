@@ -6,5 +6,7 @@ MVVM, Room, Lottie
 
 ## Screenshots
 
-![1](https://github.com/yusufgorkem/kovalTestApp/assets/111344082/c85f2309-ace3-41cc-ac91-61d701b449fb)
-![2](https://github.com/yusufgorkem/kovalTestApp/assets/111344082/0cd0ba7b-6d25-453c-b20d-5f2c058ea146)
+![1](https://github.com/yusufgorkem/kovalTestApp/assets/111344082/d416c3d3-f251-4e0c-b046-c69b90350cf1)
+![2](https://github.com/yusufgorkem/kovalTestApp/assets/111344082/b45df0fe-a262-4f00-98b3-7c9a1dd66caa)
+
+
