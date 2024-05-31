@@ -2,10 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
 
     <color name="bgColor">#F4F6FA</color>
     <color name="button_blue">#285FF6</color>
-    <color name="problem_red">#C40000</color>
+    <color name="problem_red">#C30000</color>
     <color name="text_black">#1C1C1C</color>
     <color name="body_text">#7D8088</color>
     <color name="animation_color">#E5E9FC</color>

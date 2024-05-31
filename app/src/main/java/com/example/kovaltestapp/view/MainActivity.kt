@@ -43,9 +43,10 @@ class MainActivity : AppCompatActivity() {
                 optionDb.optionDao().insert(option)
             }
         }
-        adapter = RecyclerViewAdapter(this, optionDb.optionDao().getAllOptions() as ArrayList<Option>)
+        val optionsFromDb = optionDb.optionDao().getAllOptions()
+        adapter = RecyclerViewAdapter(this, optionsFromDb as ArrayList<Option>)
         observeAnimation()
-        setUi()
+        setUi(optionsFromDb)
     }
 
     private fun observeAnimation() {
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         binding.lottieAnimation.playAnimation()
     }
 
-    private fun setUi() {
+    private fun setUi(optionsFromDb: List<Option>) {
         fun setAnimation() {
             viewModel.startAnimation()
         }
@@ -72,8 +73,19 @@ class MainActivity : AppCompatActivity() {
             binding.image33.setImageResource(R.drawable.image33)
         }
 
-        fun setDangerCircle() {
+        fun setDanger(optionsFromDb: List<Option>) {
+            var problemNumber = 0
+
             binding.dangerCircle.setImageResource(R.drawable.danger_circle)
+            for (option in optionsFromDb) {
+                problemNumber += option.problem
+            }
+            val problemText: String = if (problemNumber < 2) {
+                "Problem"
+            } else {
+                "Problems"
+            }
+            binding.problems.text = "$problemNumber $problemText"
         }
 
         fun setScanRectangle() {
@@ -98,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
         setAnimation()
         setImage33()
-        setDangerCircle()
+        setDanger(optionsFromDb)
         setScanRectangle()
         setVirusesRectangle()
         showBottomSheet()

@@ -19,6 +19,7 @@ class RecyclerViewAdapter(
         val image: ImageView = view.findViewById(R.id.image)
         val head: TextView = view.findViewById(R.id.head)
         val body: TextView = view.findViewById(R.id.body)
+        val problem: TextView = view.findViewById(R.id.problem)
         val arrowRight: ImageView = view.findViewById(R.id.arrowRight)
     }
 
@@ -35,6 +36,10 @@ class RecyclerViewAdapter(
         holder.image.setImageResource(options[position].image)
         holder.head.text = context.getString(options[position].head)
         holder.body.text = context.getString(options[position].body)
+        if (options[position].problem > 0 ) {
+            holder.problem.visibility = View.VISIBLE
+            holder.problem.text = options[position].problem.toString()
+        }
         holder.arrowRight.setImageResource(R.drawable.arrow_right)
     }
 }

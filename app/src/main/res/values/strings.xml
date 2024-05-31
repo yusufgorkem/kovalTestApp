@@ -3,6 +3,7 @@
     <string name="app_monitoring">App monitoring</string>
     <string name="app_name">KovalTestApp</string>
     <string name="app_logo">App Logo</string>
+    <string name="arrow_right">Arrow Right</string>
     <string name="battery_info">Battery info</string>
     <string name="calibration_of_sensors">Calibration of sensors</string>
     <string name="check">Check</string>
@@ -14,7 +15,6 @@
     <string name="device_scan">Device Scan</string>
     <string name="file_manager">File manager</string>
     <string name="scan_Icon">Scan Icon</string>
-    <string name="problems">12 Problems</string>
     <string name="recycler_view_icon">Recycler View Icon</string>
     <string name="show_about">Show you all info about</string>
     <string name="show_about_phone">Show you all info about phone</string>

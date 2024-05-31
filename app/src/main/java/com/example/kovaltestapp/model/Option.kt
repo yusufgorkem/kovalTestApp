@@ -15,4 +15,6 @@ class Option (
     val head: Int,
     @ColumnInfo(name = "body")
     val body: Int,
+    @ColumnInfo(name = "problem")
+    val problem: Int,
 )
